@@ -15,13 +15,13 @@ operateService() {
 
 grepStatus() {
 	isServiceExists=`systemctl status $1 2>&1 | grep -o "not be found"`
-	serviceStatus=`systemctl status $1 | grep -o active`
+	serviceStatus=`systemctl status $1 | grep -o " active"`
 	
 	if [[ "$isServiceExists" = "not be found" ]]; then
 
 		echo "Error"
 
-	elif [[ "$serviceStatus" = "active" ]]; then
+	elif [[ "$serviceStatus" = " active" ]]; then
 
 		echo "$1 status: $serviceStatus"
 	else
